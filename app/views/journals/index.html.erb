@@ -4,5 +4,6 @@
     <% @journals.each do |journal| %>
         <%= journal.name %>
         <%= journal.link %>
+        <%= button_to "Delete", journal, method: :delete, data: { confirm: "Are you sure you want to delete this Project ?"} %>
     <% end %>
 </div>

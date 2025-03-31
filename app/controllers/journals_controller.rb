@@ -16,6 +16,11 @@ class JournalsController < ApplicationController
        end
     end
     
+    def destroy
+        Journal.find(params[:id]).destroy
+        redirect_to root_url
+    end
+
     private
 
     def journal_params
