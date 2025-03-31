@@ -1,6 +1,8 @@
 <h1>All Entries</h1>
+
 <div>
- <% @journals.each do |entry| %>
-   <%= entry.name %>
- <% end %>
+    <% @journals.each do |journal| %>
+        <%= journal.name %>
+        <%= journal.link %>
+    <% end %>
 </div>
