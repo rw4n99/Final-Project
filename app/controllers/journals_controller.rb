@@ -9,16 +9,16 @@ class JournalsController < ApplicationController
         
     def create
         @journal = Journal.new(journal_params)
-       if @journal.save
+        if @journal.save
            redirect_to root_url
        else
            render :new
        end
-
-       private
+    end
+    
+    private
 
     def journal_params
         params.require(:journal).permit(:name)
-    end
     end
 end
