@@ -9,7 +9,7 @@ ARG RUBY_VERSION=3.1.2
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
-WORKDIR /Inside
+WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
@@ -26,7 +26,7 @@ ENV RAILS_ENV="production" \
 FROM base AS build
 
 # Install packages needed to build gems
-RUN apt-get update -qq && \
+RUN apt-get update -qq && apt-get install -y --no-install-recommends nodejs npm && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
@@ -36,6 +36,9 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
+# Install Node.js and Yarn
+RUN npm install -g yarn
+
 # Copy application code
 COPY . .
 
@@ -43,7 +46,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
 
