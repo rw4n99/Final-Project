@@ -28,4 +28,16 @@
 #       enabled: "ON"
 
 en:
+  languages:
+    en: "English"
+    es: "Español"
+  branding:
+    title: "GoGlobal"
+    tagline: "Your gateway to global opportunities"
+    description: "Connecting you to the world"
+  navigation:
+    home: "Home"
+    about: "About"
+    contact: "Contact"
+
   hello: "Hello world"

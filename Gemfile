@@ -28,6 +28,11 @@ gem "jbuilder"
 gem 'bootstrap'
 gem 'sassc-rails'
 
+#Gov.Uk gems
+gem "govuk_app_config"
+gem 'govuk_design_system_formbuilder'
+gem "govuk-design-system-rails"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
