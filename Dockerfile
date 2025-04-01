@@ -32,24 +32,15 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends nodejs npm 
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
+RUN gem update --system && gem install bundler && bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    bundle exec bootsnap precompile --gemfile
-
-# Install Node.js and Yarn
-RUN npm install -g yarn
+    npm install -g yarn
 
 # Copy application code
 COPY . .
 
 # Precompile bootsnap code for faster boot times
-# RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-
-
+RUN bundle exec bootsnap precompile app/ lib/
 
 # Final stage for app image
 FROM base
