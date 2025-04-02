@@ -1,7 +1,36 @@
-<% if user_signed_in? %> 
- <div> Welcome <%= current_user.email %> </div> 
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-<% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"> <%= t('index.title') %> </h1>
+        <div class="govuk-inset-text">
+            <%= t('inset.welsh') %>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl"> <%= t('index.intro') %> </span>
+        <br>
+        <p class="govuk-body "> <%= t('index.block_text') %> </p>
+
+        <% if user_signed_in? %> 
+            <div> Welcome <%= current_user.email %> </div> 
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <% else %>
+        <div class="govuk-body">
+            <span><%= t('index.not_auth') %></span>
+            <a href="<%= new_user_session_path %>" class="govuk-link">
+                <%= t('index.sign_in_link') %>
+            </a>
+        </div>
 <% end %>
-<h1>Hello DigitalOcean!</h1>
+    </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><%= t('related_content.title') %></h3>
+        <p class="govuk-body">This is a paragraph inside a one-third wide column</p>
+      </div>
+    </div>
+  </main>
+</div>
