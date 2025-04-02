@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'journals#index'
+
   resources :journals, only: [:create, :new, :destroy]
 
+  # test connection to supabase
+  
 
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,6 +21,11 @@ Rails.application.routes.draw do
 
   # sets cookies
  post "/form-handler", to: "cookies#set_cookie"
+
+  # Defines the route for new application
+  get "/new", to: "journals#new"
+
+
 
   # Defines the root path route ("/")
   # root "posts#index"
