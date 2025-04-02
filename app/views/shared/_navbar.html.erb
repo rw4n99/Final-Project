@@ -1,20 +1,78 @@
-<header class="govuk-header">
-  <div class="govuk-header__container govuk-width-container">
-    <div class="govuk-header__logo">
-      <a href="#" class="govuk-header__link govuk-header__link--homepage" aria-label="GoGlobal">
-        <svg
-          focusable="false"
-          role="img"
-          class="custom-logo"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 148 30"
-          height="30"
-          width="148"
-          aria-label="Return Home">
-          <title>GoGlobal Homepage</title>
-          <text x="10" y="20" font-size="25" font-weight="bold" fill="white">GoGlobal</text>
-        </svg>
-      </a>
+<% unless cookies[:analytics_consent] %>
+    <form action="/form-handler" method="post" novalidate>
+      <div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on My Service">
+        <div class="govuk-cookie-banner__message govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+                <%= t('cookie_banner.title') %>
+              </h2>
+              <div class="govuk-cookie-banner__content">
+                <p class="govuk-body"> <%= t('cookie_banner.message') %> </p>
+              </div>
+            </div>
+          </div>
+          <div class="govuk-button-group">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <button value="yes" type="submit" name="cookies[analytics]" class="govuk-button" data-module="govuk-button">
+              <%= t('cookie_banner.accept') %>
+            </button>
+            <button value="no" type="submit" name="cookies[analytics]" class="govuk-button" data-module="govuk-button">
+              <%= t('cookie_banner.decline') %>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  <% end %>
+
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link"> <%= t('accessibility.skip') %> </a>
+  <header class="govuk-header" data-module="govuk-header">
+    <div class="govuk-header__container app-width-container">
+      <div class="govuk-header__logo">
+        <a href="#" class="govuk-header__link govuk-header__link--homepage">
+
+        </a>
+      </div>
+      <div class="govuk-header__content">
+        <a href="#" class="govuk-header__link govuk-header__service-name">
+          <%= t('branding.title') %>
+        </a>
+        <nav aria-label="Menu" class="govuk-header__navigation">
+          <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
+            Menu
+          </button>
+          <ul id="navigation" class="govuk-header__navigation-list">
+            <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+              <a class="govuk-header__link" href="#">
+                <%= t('navigation.start') %>
+              </a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="#">
+                <%= t('navigation.track') %>
+              </a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="#">
+                <%= t('navigation.help') %>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
+  </header>
+  <div class="govuk-width-container app-width-container">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          <%= t('alpha_service.text') %>
+        </span>
+      </p>
+    </div>
+    <a href="#" class="govuk-back-link"> <%= t('navigation.back') %> </a>
   </div>
-</header>

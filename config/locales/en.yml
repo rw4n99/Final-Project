@@ -50,3 +50,9 @@ en:
     track: "Track your current applications"
     help: "Ask for help"
     back": "Back"
+  footer:
+    help: "Help"
+    cookies: "Cookies"
+    terms: "Terms and conditions"
+    more_info: "A GoGlobal service"
+    copyright: "© 2025 Rowan Godfrey"
