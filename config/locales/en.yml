@@ -31,13 +31,22 @@ en:
   languages:
     en: "English"
     es: "Español"
+  accessibility: 
+    skip: "Skip to main content"
+  alpha_service:
+    alpha: "Alpha"
+    text: "This is a new service - your feedback will help us to improve it."
+  cookie_banner:
+    title: "Cookies"
+    message: "This website uses cookies to ensure you get the best experience on our website."
+    accept: "Accept cookies"
+    decline: "Decline cookies"
   branding:
     title: "GoGlobal"
     tagline: "Your gateway to global opportunities"
     description: "Connecting you to the world"
   navigation:
-    home: "Home"
-    about: "About"
-    contact: "Contact"
-
-  hello: "Hello world"
+    start: "Start a new application"
+    track: "Track your current applications"
+    help: "Ask for help"
+    back": "Back"
