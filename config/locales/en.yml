@@ -90,4 +90,11 @@ en:
     block_text: "GoGlobal is a service designed to help you apply for visas and permits to work or study abroad. We are currently in the alpha stage of development, and this service is only designed for British or UK passport holders wanting to apply for a student visa in Spain."
   related_content:
     title: "Related content"
+  errors:
+    sign_up:
+      title: "There was a problem"
+      intro: "Please check the errors below and try again."
+      email: "Please enter a correct email address"
+      password: "Please enter a password with at least 6 characters"
+      confirm_password: "Passwords do not match"
     

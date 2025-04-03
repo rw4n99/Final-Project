@@ -16,15 +16,19 @@
         <p class="govuk-body "> <%= t('index.block_text') %> </p>
 
         <% if user_signed_in? %> 
-            <div> Welcome <%= current_user.email %> </div> 
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-        <% else %>
-        <div class="govuk-body">
-            <span><%= t('index.not_auth') %></span>
-            <a href="<%= new_user_session_path %>" class="govuk-link">
-                <%= t('index.sign_in_link') %>
-            </a>
-        </div>
+    <div class="govuk-heading-l">Welcome, <%= current_user.email %></div>
+    <div class="govuk-body">
+        <p class="govuk-body">Start a new visa application now</p>
+    
+    </div>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "govuk-button govuk-button--secondary" %>
+<% else %>
+    <div class="govuk-body">
+        <span><%= t('index.not_auth') %></span>
+        <a href="<%= new_user_session_path %>" class="govuk-link">
+            <%= t('index.sign_in_link') %>
+        </a>
+    </div>
 <% end %>
     </div>
       <div class="govuk-grid-column-one-third">

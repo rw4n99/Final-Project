@@ -8,9 +8,16 @@
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "govuk-form" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <div class="govuk-form-group">
-            <%= f.label t('auth.email'), class: "govuk-label" %>
-            <%= f.email_field :email, class: "govuk-input", autofocus: true, autocomplete: "email" %>
+          <div class="govuk-form-group <%= 'govuk-form-group--error' if resource.errors[:email].any? %>">
+            <%= f.label :email, t('auth.email'), class: "govuk-label" %>
+
+            <% if resource.errors[:email].any? %>
+              <p class="govuk-error-message">
+                <%= resource.errors.full_messages_for(:email).first %>
+              </p>
+            <% end %>
+
+            <%= f.email_field :email, class: "govuk-input <%= 'govuk-input--error' if resource.errors[:email].any? %>", autofocus: true, autocomplete: "email" %>
           </div>
 
           <div class="govuk-form-group">
