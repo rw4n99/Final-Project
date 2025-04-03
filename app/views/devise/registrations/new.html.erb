@@ -1,0 +1,64 @@
+<div class="govuk-width-container">
+  
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"> <%= t('auth.title') %> </h1>
+        <p class="govuk-body-l"> <%= t('auth.intro') %> </p>
+      </div>
+      
+    </div>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "govuk-form" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="govuk-form-group">
+          <%= f.label t('auth.first_name'), class: "govuk-label" %>
+          <%= f.text_field :firstname, class: "govuk-input", autofocus: true, autocomplete: "firstname"  %>
+        </div>
+
+        <div class="govuk-form-group">
+          <%= f.label t('auth.last_name'), class: "govuk-label" %>
+          <%= f.text_field :lastname, class: "govuk-input", autofocus: true, autocomplete: "lastname" %>
+        </div>
+
+          <div class="govuk-form-group">
+            <%= f.label t('auth.email'), class: "govuk-label" %>
+            <%= f.email_field :email, class: "govuk-input", autofocus: true, autocomplete: "email" %>
+          </div>
+          
+          <div class="govuk-form-group">
+            <%= f.label t('auth.password'), class: "govuk-label" %>
+            <% if @minimum_password_length %>
+              <span class="govuk-hint">(<%= @minimum_password_length %> characters minimum)</span>
+            <% end %>
+            <%= f.password_field :password, class: "govuk-input", autocomplete: "new-password" %>
+          </div>
+          
+          <div class="govuk-form-group">
+            <%= f.label t('auth.confirm_password'), class: "govuk-label" %>
+            <%= f.password_field :password_confirmation, class: "govuk-input", autocomplete: "new-password" %>
+          </div>
+          
+          <div class="govuk-form-group">
+            <%= f.submit "Sign up", class: "govuk-button" %>
+          </div>
+          <div class="govuk-body">
+          <span><%= t('auth.already_have_account') %></span>
+          <a href="<%= new_user_session_path %>" class="govuk-link">
+              <%= t('auth.sign_in_link') %>
+          </a>
+        </div>
+        <% end %>
+
+      </div>
+      
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-m">Why sign up?</h3>
+        <p class="govuk-body">Gain access to exclusive content and services.</p>
+      </div>
+    </div>
+  </main>
+</div>

@@ -31,6 +31,8 @@ en:
   languages:
     en: "English"
     es: "Español"
+  inset: 
+    welsh: "This guide is also availbale in Welsh. To view the Welsh version, "
   accessibility: 
     skip: "Skip to main content"
   alpha_service:
@@ -50,3 +52,51 @@ en:
     track: "Track your current applications"
     help: "Ask for help"
     back": "Back"
+  footer:
+    help: "Help"
+    cookies: "Cookies"
+    terms: "Terms and conditions"
+    more_info: "A GoGlobal service"
+    copyright: "© 2025 Rowan Godfrey"
+  auth:
+    title: "Create an account"
+    intro: "Create an account to start and manage your application."
+    email: "Email"
+    password: "Password"
+    confirm_password: "Confirm password"
+    sign_up_button: "Sign up"
+    already_have_account: "Already have an account?"
+    sign_in_link: "Sign in"
+    sign_up_no_account: "Don't have an account? Sign up here"
+    first_name: "First name"
+    last_name: "Last name"
+  sign_in:
+    title: "Sign in to your account"
+    intro: "Sign in to manage or start your application."
+    sign_in_button: "Sign in"
+    forgot_password: "Forgot your password?"
+    remember: "Remember me"
+  forgot_password:
+    title: "Forgotten your password?"
+    intro: "Enter your email address to reset your password."
+    reset_button: "Send reset link"
+    back_to_sign_in: "Back to sign in"
+  index:
+    title: "Welcome to GoGlobal"
+    intro: "Your gateway to global opportunities"
+    start: "Start a new application"
+    track: "Track your current applications"
+    help: "Ask for help"
+    not_auth: "To use this service, you must "
+    sign_in_link: "sign in"
+    block_text: "GoGlobal is a service designed to help you apply for visas and permits to work or study abroad. We are currently in the alpha stage of development, and this service is only designed for British or UK passport holders wanting to apply for a student visa in Spain."
+  related_content:
+    title: "Related content"
+  errors:
+    sign_up:
+      title: "There was a problem"
+      intro: "Please check the errors below and try again."
+      email: "Please enter a correct email address"
+      password: "Please enter a password with at least 6 characters"
+      confirm_password: "Passwords do not match"
+    

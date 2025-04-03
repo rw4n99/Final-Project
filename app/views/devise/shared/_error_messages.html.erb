@@ -1,0 +1,16 @@
+<% if resource.errors.any? %>
+  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-turbo-cache="false">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+      <%= t('errors.sign_up.title') %>
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <% resource.errors.each do |error| %>
+          <% field = error.attribute %> <!-- This will directly use the field name -->
+          <% field_message = t("errors.sign_up.#{field}", default: error.full_message) %>
+          <li><%= field_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

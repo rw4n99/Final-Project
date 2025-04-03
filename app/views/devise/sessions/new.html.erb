@@ -1,0 +1,75 @@
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"><%= t('sign_in.title') %></h1>
+        <p class="govuk-body-l"><%= t('sign_in.intro') %></p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- Display global error messages -->
+        <% if flash[:alert] %>
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            <%= t('errors.sign_up.title') %>
+          </h2>
+          <p class="govuk-body-l">
+            <%= t('errors.sign_up.intro') %>
+          </p>
+          <ul class="govuk-list govuk-error-summary__list">
+            <li><%= flash[:alert] %></li>
+          </ul>
+        </div>
+      <% end %>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "govuk-form" }) do |f| %>
+          
+          <!-- EMAIL FIELD -->
+          <div class="govuk-form-group <%= 'govuk-form-group--error' if resource.errors[:email].any? %>">
+            <%= f.label :email, t('auth.email'), class: "govuk-label" %>
+            <%= f.email_field :email, class: "govuk-input #{'govuk-input--error' if resource.errors[:email].any?}", autofocus: true, autocomplete: "email" %>
+            <% if resource.errors[:email].any? %>
+              <p class="govuk-error-message"><%= resource.errors.full_messages_for(:email).join(", ") %></p>
+            <% end %>
+          </div>
+
+          <!-- PASSWORD FIELD -->
+          <div class="govuk-form-group <%= 'govuk-form-group--error' if resource.errors[:password].any? %>">
+            <%= f.label :password, t('auth.password'), class: "govuk-label" %>
+            <%= f.password_field :password, class: "govuk-input #{'govuk-input--error' if resource.errors[:password].any?}", autocomplete: "current-password" %>
+            <% if resource.errors[:password].any? %>
+              <p class="govuk-error-message"><%= resource.errors.full_messages_for(:password).join(", ") %></p>
+            <% end %>
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <p><%= link_to t('auth.forgot_password'), new_password_path(resource_name), class: "govuk-link" %></p>
+            <% end %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="govuk-form-group">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <%= f.check_box :remember_me, class: "govuk-checkboxes__input" %>
+                  <%= f.label :remember_me, t('sign_in.remember'), class: "govuk-label govuk-checkboxes__label" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="govuk-form-group">
+            <%= f.submit t('sign_in.sign_in_button'), class: "govuk-button" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-m"><%= t('sign_in.need_help_title') %></h3>
+        <p class="govuk-body"><%= t('sign_in.need_help_text') %></p>
+      </div>
+    </div>
+  </main>
+</div>
