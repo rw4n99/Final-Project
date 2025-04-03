@@ -1,0 +1,17 @@
+<h1>New Visa Application</h1>
+
+<%= form_with model: @visa_application, local: true do |f| %>
+  <h2>Document Checklist</h2>
+  
+  <div>
+    <%= f.label :documents_collected, "National Visa Application Form" %>
+    <%= f.check_box :documents_collected %>
+  </div>
+
+  <div>
+    <%= f.label :documents, "Upload Documents" %>
+    <%= f.file_field :documents %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

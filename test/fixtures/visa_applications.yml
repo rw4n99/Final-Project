@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  eligibility: false
+  consular_jurisdiction: false
+  documents_collected: false
+  application_submitted: false
+  address: MyString
+  document_dates: 
+
+two:
+  user: two
+  eligibility: false
+  consular_jurisdiction: false
+  documents_collected: false
+  application_submitted: false
+  address: MyString
+  document_dates: 

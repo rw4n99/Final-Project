@@ -1,32 +1,23 @@
 Rails.application.routes.draw do
+  # Devise for authentication
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root 'journals#index'
+  # Root path (Pick one)
+  root 'journals#index' # or change to 'visa_applications#new' if needed
 
+  # Visa Applications Routes (only necessary actions)
+  resources :visa_applications, only: [:new, :create, :update, :show]
+
+  # Journals Routes
   resources :journals, only: [:create, :new, :destroy]
 
-  # test connection to supabase
-  
-
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
+  # PWA Routes
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # sets cookies
- post "/form-handler", to: "cookies#set_cookie"
-
-  # Defines the route for new application
-  get "/new", to: "journals#new"
-
-
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Set cookies
+  post "/form-handler", to: "cookies#set_cookie"
 end
