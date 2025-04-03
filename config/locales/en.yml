@@ -68,6 +68,8 @@ en:
     already_have_account: "Already have an account?"
     sign_in_link: "Sign in"
     sign_up_no_account: "Don't have an account? Sign up here"
+    first_name: "First name"
+    last_name: "Last name"
   sign_in:
     title: "Sign in to your account"
     intro: "Sign in to manage or start your application."
