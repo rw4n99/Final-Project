@@ -1,17 +1,22 @@
-<h1>New Visa Application</h1>
+<h1 class="govuk-heading-xl">New Visa Application</h1>
 
-<%= form_with model: @visa_application, local: true do |f| %>
-  <h2>Document Checklist</h2>
+<%= form_with model: @visa_application, local: true, class: "govuk-form-group" do |f| %>
   
-  <div>
-    <%= f.label :documents_collected, "National Visa Application Form" %>
-    <%= f.check_box :documents_collected %>
+  <h2 class="govuk-heading-l">Document Checklist</h2>
+  
+  <div class="govuk-form-group">
+    <%= f.label :documents_collected, "National Visa Application Form", class: "govuk-label" %>
+    <div class="govuk-checkboxes">
+      <%= f.check_box :documents_collected, class: "govuk-checkboxes__input" %>
+      <span class="govuk-checkboxes__label">I have completed the National Visa Application Form</span>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :documents, "Upload Documents" %>
-    <%= f.file_field :documents %>
+  <div class="govuk-form-group">
+    <%= f.label :documents, "Upload Documents", class: "govuk-label" %>
+    <%= f.file_field :documents, class: "govuk-file-upload" %>
+    <div class="govuk-hint">Please upload the required supporting documents for your visa application.</div>
   </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: "govuk-button govuk-button--primary" %>
 <% end %>

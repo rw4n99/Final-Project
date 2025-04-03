@@ -82,7 +82,9 @@ en:
     reset_button: "Send reset link"
     back_to_sign_in: "Back to sign in"
   index:
-    title: "Welcome to GoGlobal"
+    title:
+      signed_in: "Welcome, "
+      signed_out: "Welcome to GoGlobal"
     intro: "Your gateway to global opportunities"
     start: "Start a new application"
     track: "Track your current applications"
@@ -90,6 +92,8 @@ en:
     not_auth: "To use this service, you must "
     sign_in_link: "sign in"
     block_text: "GoGlobal is a service designed to help you apply for visas and permits to work or study abroad. We are currently in the alpha stage of development, and this service is only designed for British or UK passport holders wanting to apply for a student visa in Spain."
+    block_text_2: "Applying for a visa can be a complex process, and we are here to help you every step of the way. This service will allow you to upload your documents, and track their status."
+    start_button: "Click here to upload your documents."
   related_content:
     title: "Related content"
   errors:
