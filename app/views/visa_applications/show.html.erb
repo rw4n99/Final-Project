@@ -1,0 +1,6 @@
+<% if @visa_application.documents.attached? %>
+  <h3>Uploaded Document:</h3>
+  <%= link_to "Download the document", rails_blob_path(@visa_application.documents, only_path: true) %>
+<% else %>
+  <p>No document uploaded.</p>
+<% end %>
