@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'journals#index' # or change to 'visa_applications#new' if needed
 
   # Visa Applications Routes (only necessary actions)
-  resources :visa_documents, only: [:new, :create, :update]
+  resources :visa_documents, only: [:index,:new, :create, :update]
 
   # Journals Routes
   resources :journals, only: [:create, :new, :destroy]

@@ -5,6 +5,10 @@ class VisaDocumentsController < ApplicationController
     @visa_document = current_user.visa_documents.build
   end
 
+  def index
+    @visa_documents = current_user.visa_documents
+  end
+
   def create
     @visa_document = current_user.visa_documents.build(visa_document_params)
     
