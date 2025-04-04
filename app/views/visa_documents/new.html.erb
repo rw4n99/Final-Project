@@ -1,0 +1,35 @@
+<%= form_with(model: @visa_document, local: true, multipart: true) do |form| %>
+  <!-- Eligibility Confirmation -->
+  <div>
+    <%= form.label :eligibility, "Are you applying for an Auxiliar visa for a stay exceeding 90 days?" %>
+    <%= form.check_box :eligibility %>
+  </div>
+
+  <!-- Consular Jurisdiction -->
+  <div>
+    <%= form.label :address, "Please enter your current address:" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <!-- Document Upload -->
+  <h3>Upload Documents</h3>
+  <div>
+    <%= form.label :visa_application_form, "National Visa Application Form" %>
+    <%= form.file_field :visa_application_form %>
+  </div>
+
+  <!-- Other documents would be uploaded here similarly -->
+
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
+
+<!-- Display if the National Visa Application Form has been uploaded -->
+<% if @visa_document.visa_application_form.attached? %>
+  <p>Your National Visa Application Form has been uploaded.</p>
+  <p>Uploaded Document: <%= @visa_document.visa_application_form.filename.to_s %></p>
+  <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment") %>
+<% else %>
+  <p>You need to upload the National Visa Application Form.</p>
+<% end %>

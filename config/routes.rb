@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "visa_documents/new"
+  get "visa_documents/create"
+  get "visa_documents/update"
   # Devise for authentication
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -6,7 +9,7 @@ Rails.application.routes.draw do
   root 'journals#index' # or change to 'visa_applications#new' if needed
 
   # Visa Applications Routes (only necessary actions)
-  resources :visa_applications, only: [:new, :create, :update, :show]
+  resources :visa_documents, only: [:new, :create, :update]
 
   # Journals Routes
   resources :journals, only: [:create, :new, :destroy]
