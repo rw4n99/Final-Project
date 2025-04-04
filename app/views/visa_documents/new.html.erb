@@ -1,35 +1,37 @@
 <%= form_with(model: @visa_document, local: true, multipart: true) do |form| %>
   <!-- Eligibility Confirmation -->
-  <div>
-    <%= form.label :eligibility, "Are you applying for an Auxiliar visa for a stay exceeding 90 days?" %>
-    <%= form.check_box :eligibility %>
+  <div class="govuk-form-group">
+    <%= form.label :eligibility, "Are you applying for an Auxiliar visa for a stay exceeding 90 days?", class: "govuk-label" %>
+    <%= form.check_box :eligibility, class: "govuk-checkboxes__input" %>
   </div>
 
-  <!-- Consular Jurisdiction -->
-  <div>
-    <%= form.label :address, "Please enter your current address:" %>
-    <%= form.text_field :address %>
+  <!-- Document Upload Section -->
+  <h3 class="govuk-heading-s">Upload Documents</h3>
+  
+  <!-- National Visa Application Form -->
+  <div class="govuk-form-group">
+    <%= form.label :visa_application_form, "National Visa Application Form", class: "govuk-label" %>
+    <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
+    <div class="govuk-checkboxes">
+      <%= form.check_box :visa_application_form_legalized, class: "govuk-checkboxes__input" %>
+      <%= form.label :visa_application_form_legalized, "Legalized (apostille)", class: "govuk-label" %>
+      <%= form.check_box :visa_application_form_translated, class: "govuk-checkboxes__input" %>
+      <%= form.label :visa_application_form_translated, "Translated by an apostille", class: "govuk-label" %>
+    </div>
   </div>
 
-  <!-- Document Upload -->
-  <h3>Upload Documents</h3>
-  <div>
-    <%= form.label :visa_application_form, "National Visa Application Form" %>
-    <%= form.file_field :visa_application_form %>
-  </div>
-
-  <!-- Other documents would be uploaded here similarly -->
-
-  <div>
-    <%= form.submit "Submit" %>
+  <!-- Submit Button -->
+  <div class="govuk-form-group">
+    <%= form.submit "Submit", class: "govuk-button" %>
   </div>
 <% end %>
 
-<!-- Display if the National Visa Application Form has been uploaded -->
+<!-- Display if documents have been uploaded -->
 <% if @visa_document.visa_application_form.attached? %>
   <p>Your National Visa Application Form has been uploaded.</p>
   <p>Uploaded Document: <%= @visa_document.visa_application_form.filename.to_s %></p>
-  <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment") %>
+  <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %>
 <% else %>
   <p>You need to upload the National Visa Application Form.</p>
 <% end %>
+
