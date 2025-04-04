@@ -11,7 +11,7 @@ class VisaDocumentsController < ApplicationController
 
   def create
     @visa_document = current_user.visa_documents.build(visa_document_params)
-    
+
     if @visa_document.save
       if @visa_document.visa_application_form.attached?
         flash[:notice] = "Document uploaded successfully."
@@ -24,12 +24,19 @@ class VisaDocumentsController < ApplicationController
     end
   end
 
-  private
+  def edit
+    @visa_document = VisaDocument.find_by(id: params[:id])
+
+    if @visa_document.nil?
+      redirect_to visa_documents_path, alert: "Visa document not found."
+    end
+  end
 
   def update
-    @visa_document = current_user.visa_documents.find(params[:id])
+    @visa_document = VisaDocument.find(params[:id])
+
     if @visa_document.update(visa_document_params)
-      redirect_to visa_documents_path
+      redirect_to visa_documents_path, notice: "Document updated successfully."
     else
       render :edit
     end

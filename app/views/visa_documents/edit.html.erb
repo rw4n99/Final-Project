@@ -1,0 +1,29 @@
+<%= form_with(model: @visa_document, url: visa_document_path(@visa_document), local: true, multipart: true) do |form| %>
+  <h1 class="govuk-heading-l">Edit National Visa Application Form</h1>
+
+  <!-- Existing Document -->
+  <% if @visa_document.visa_application_form.attached? %>
+    <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__key">
+        <strong>Existing National Visa Application Form</strong>
+      </div>
+      <div class="govuk-summary-list__value">
+        <%= @visa_document.visa_application_form.filename.to_s %>
+        <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %>
+      </div>
+    </div>
+  <% else %>
+    <p>No document uploaded</p>
+  <% end %>
+
+  <!-- Upload New Document -->
+  <div class="govuk-form-group">
+    <%= form.label :visa_application_form, "Upload New National Visa Application Form", class: "govuk-label" %>
+    <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="govuk-form-group">
+    <%= form.submit "Update Document", class: "govuk-button" %>
+  </div>
+<% end %>
