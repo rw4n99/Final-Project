@@ -1,0 +1,20 @@
+<h1 class="govuk-heading-l">Uploaded Visa Documents</h1>
+
+<% @visa_documents.each do |visa_document| %>
+  <div class="govuk-summary-list__row">
+    <div class="govuk-summary-list__key">
+      <strong>National Visa Application Form</strong>
+    </div>
+    <div class="govuk-summary-list__value">
+      <% if visa_document.visa_application_form.attached? %>
+        <p>
+          <%= visa_document.visa_application_form.filename.to_s %>
+          <%= link_to "Download", rails_blob_path(visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %>
+          <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+        </p>
+      <% else %>
+        <p>No document uploaded</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

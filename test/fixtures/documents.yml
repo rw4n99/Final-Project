@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visa_application: one
+  document_type: MyString
+  file: MyString
+
+two:
+  visa_application: two
+  document_type: MyString
+  file: MyString
