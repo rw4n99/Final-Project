@@ -1,5 +1,6 @@
 class VisaDocumentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_visa_document, only: [:edit, :update]
 
   def new
     @visa_document = current_user.visa_documents.build
@@ -18,31 +19,47 @@ class VisaDocumentsController < ApplicationController
       else
         flash[:alert] = "Please upload the National Visa Application Form."
       end
-      redirect_to visa_documents_path # Redirect to the documents index page, or back to form if you prefer
+      redirect_to visa_documents_path
     else
       render :new
     end
   end
 
   def edit
-    @visa_document = VisaDocument.find_by(id: params[:id])
-
+    # No need to find @visa_document here; it's already set by the before_action
     if @visa_document.nil?
       redirect_to visa_documents_path, alert: "Visa document not found."
     end
   end
 
   def update
-    @visa_document = VisaDocument.find(params[:id])
-
-    if @visa_document.update(visa_document_params)
-      redirect_to visa_documents_path, notice: "Document updated successfully."
+    visa_document_params.each do |key, value|
+      next unless @visa_document.respond_to?(key) && value.present?
+  
+      # Purge the existing attachment if present
+      @visa_document.send(key).purge if @visa_document.send(key).attached?
+  
+      # Attach the new file
+      @visa_document.send(key).attach(value)
+    end
+  
+    # Save the document and handle errors
+    if @visa_document.save
+      redirect_to visa_document_path(@visa_document), notice: 'Document updated successfully'
     else
       render :edit
     end
   end
 
   private
+
+  def set_visa_document
+    @visa_document = VisaDocument.find_by(id: params[:id])
+    if @visa_document.nil?
+      redirect_to visa_documents_path, alert: "Visa document not found."
+    end
+  end
+
   def visa_document_params
     params.require(:visa_document).permit(
       :eligibility,
@@ -54,7 +71,7 @@ class VisaDocumentsController < ApplicationController
       :health_insurance,
       :criminal_record,
       :medical_certificate,
-      :visa_application_payment,
+      :visa_application_payment
     )
   end
 
