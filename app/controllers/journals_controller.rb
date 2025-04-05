@@ -1,6 +1,8 @@
 class JournalsController < ApplicationController
     def index
-        render
+        
+        @visa_document = VisaDocument.find_by(user_id: current_user.id)
+        
     end
         
     def new

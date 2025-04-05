@@ -2,46 +2,192 @@
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-      
-      <% if user_signed_in? %>
-        <%= t('index.title.signed_in') %> 
-        <%= current_user.lastname %>
-      <% else %>
-        <%= t('index.title.signed_out') %>
-      <% end %>
-    </h1>
+        <h1 class="govuk-heading-xl">
+          <% if user_signed_in? %>
+            <%= t('index.title.signed_in') %>
+            <%= current_user.lastname %>
+          <% else %>
+            <%= t('index.title.signed_out') %>
+          <% end %>
+        </h1>
         <div class="govuk-inset-text">
-            <%= t('inset.welsh') %>
+          <%= t('inset.welsh') %>
         </div>
       </div>
     </div>
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl"> <%= t('index.intro') %> </span>
-        <br>
-        <p class="govuk-body "> <%= t('index.block_text') %> </p>
-        <p class="govuk-body "> <%= t('index.block_text_2') %> </p>
 
-        <% if user_signed_in? %> 
-    <div class="govuk-body">
-    <p class="govuk-body">
-    <a href="<%= '/visa_documents/new' %>" class="govuk-link">
-      <%= t('index.start_button') %>
-    </a>
-  </p>
-    
-    </div>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "govuk-button govuk-button--secondary" %>
-<% else %>
-    <div class="govuk-body">
-        <span><%= t('index.not_auth') %></span>
-        <a href="<%= new_user_session_path %>" class="govuk-link">
-            <%= t('index.sign_in_link') %>
-        </a>
-    </div>
-<% end %>
-    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">
+          <%= t('index.intro') %>
+        </span>
+        <br>
+        <p class="govuk-body">
+          <%= t('index.block_text') %>
+        </p>
+        <p class="govuk-body">
+          <%= t('index.block_text_2') %>
+        </p>
+
+        <% if user_signed_in? %>
+          <div class="govuk-body">
+            <p class="govuk-body">
+              <a href="<%= '/visa_documents/new' %>" class="govuk-link">
+                <%= t('index.start_button') %>
+              </a>
+            </p>
+            <% if @visa_document %>
+              <ul class="govuk-list">
+                <% if @visa_document.visa_application_form.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Visa Application Form</h3>
+                    <p>
+                      <%= @visa_document.visa_application_form.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Visa Application Form</h3>
+                    <p>No Visa application submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.photograph_id.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Photographic ID</h3>
+                    <p>
+                      <%= @visa_document.photograph_id.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Photographic ID</h3>
+                    <p>No Photographic ID submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.passport.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Passport</h3>
+                    <p>
+                      <%= @visa_document.passport.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Passport</h3>
+                    <p>No Passport submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.nombramiento.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Nombramiento</h3>
+                    <p>
+                      <%= @visa_document.nombramiento.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Nombramiento</h3>
+                    <p>No Nombramiento submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.health_insurance.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Health Insurance</h3>
+                    <p>
+                      <%= @visa_document.health_insurance.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Health Insurance</h3>
+                    <p>No Health Insurance submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.criminal_record.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Criminal Record</h3>
+                    <p>
+                      <%= @visa_document.criminal_record.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Criminal Record</h3>
+                    <p>No Criminal Record submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.medical_certificate.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Medical Certificate</h3>
+                    <p>
+                      <%= @visa_document.medical_certificate.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Medical Certificate</h3>
+                    <p>No Medical Certificate submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+
+                <% if @visa_document.visa_application_payment.attached? %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Visa Application Payment</h3>
+                    <p>
+                      <%= @visa_document.visa_application_payment.filename.to_s %><br>
+                      <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to "Edit", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                    </p>
+                  </li>
+                <% else %>
+                  <li class="govuk-!-margin-bottom govuk-border-bottom">
+                    <h3 class="govuk-heading-s">Visa Application Payment</h3>
+                    <p>No Proof of visa payment submitted.</p>
+                    <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "govuk-button govuk-button--secondary" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="govuk-body">
+            <span><%= t('index.not_auth') %></span>
+            <a href="<%= new_user_session_path %>" class="govuk-link">
+              <%= t('index.sign_in_link') %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+
       <div class="govuk-grid-column-one-third">
         <h3 class="govuk-heading-s"><%= t('related_content.title') %></h3>
         <p class="govuk-body">This is a paragraph inside a one-third wide column</p>

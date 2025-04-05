@@ -1,69 +1,94 @@
+
 <%= form_with(model: @visa_document, local: true, multipart: true) do |form| %>
-  <!-- Eligibility Confirmation -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :eligibility, "Are you applying for an Auxiliar visa for a stay exceeding 90 days?", class: "govuk-label" %>
-    <%= form.check_box :eligibility, class: "govuk-checkboxes__input" %>
-  </div>
+  <table class="govuk-table">
+    <thead>
+      <tr>
+        <th class="govuk-table__header" colspan="2">Visa Document Upload</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- National Visa Application Form -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :visa_application_form, "National Visa Application Form", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Document Upload Section -->
-  <h3 class="govuk-heading-s">Upload Documents</h3>
+      <!-- Proof of ID -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :photograph_id, "Photograph ID (e.g. Passport-style photo)", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- National Visa Application Form -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :visa_application_form, "National Visa Application Form", class: "govuk-label" %>
-    <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
-    <div class="govuk-checkboxes">
-      <%= form.check_box :visa_application_form_legalized, class: "govuk-checkboxes__input" %>
-      <%= form.label :visa_application_form_legalized, "Legalized (apostille)", class: "govuk-label" %>
-      <%= form.check_box :visa_application_form_translated, class: "govuk-checkboxes__input" %>
-      <%= form.label :visa_application_form_translated, "Translated by an apostille", class: "govuk-label" %>
-    </div>
-  </div>
+      <!-- Passport -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :passport, "Passport", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :passport, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Proof of ID -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :photograph_id, "Photograph ID (e.g. Passport-style photo)", class: "govuk-label" %>
-    <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
-  </div>
+      <!-- Nombramiento -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :nombramiento, "Nombramiento", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :nombramiento, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Passport -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :passport, "Passport", class: "govuk-label" %>
-    <%= form.file_field :passport, class: "govuk-file-upload" %>
-  </div>
+      <!-- Health Insurance -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :health_insurance, "Health Insurance", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :health_insurance, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Nombramiento -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :nombramiento, "Nombramiento", class: "govuk-label" %>
-    <%= form.file_field :nombramiento, class: "govuk-file-upload" %>
-  </div>
+      <!-- Criminal Record Check -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :criminal_record, "Criminal Record Check", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :criminal_record, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Health Insurance -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :health_insurance, "Health Insurance", class: "govuk-label" %>
-    <%= form.file_field :health_insurance, class: "govuk-file-upload" %>
-  </div>
+      <!-- Medical Certificate -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :medical_certificate, "Medical Certificate", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :medical_certificate, class: "govuk-file-upload" %>
+        </td>
+      </tr>
 
-  <!-- Criminal Record Check -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :criminal_record, "Criminal Record Check", class: "govuk-label" %>
-    <%= form.file_field :criminal_record, class: "govuk-file-upload" %>
-  </div>
+      <!-- Visa Application Payment -->
+      <tr>
+        <td class="govuk-table__cell">
+          <%= form.label :visa_application_payment, "Visa application payment", class: "govuk-label" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= form.file_field :visa_application_payment, class: "govuk-file-upload" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <!-- Medical Certificate -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :medical_certificate, "Medical Certificate", class: "govuk-label" %>
-    <%= form.file_field :medical_certificate, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Visa application payment -->
-  <div class="govuk-form-group govuk-form-group--line">
-    <%= form.label :visa_application_payment, "Visa application payment", class: "govuk-label" %>
-    <%= form.file_field :visa_application_payment, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Submit Button -->
-  <div class="govuk-form-group">
-    <%= form.submit "Submit", class: "govuk-button" %>
-  </div>
+      <!-- Submit Button -->
+      <%= form.submit "Submit", class: "govuk-button" %>
 <% end %>
