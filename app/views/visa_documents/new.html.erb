@@ -20,6 +20,12 @@
     </div>
   </div>
 
+  <!-- Proof of ID -->
+  <div class="govuk-form-group">
+  <%= form.label :photograph_id, "Photograph ID (e.g. Passport-style photo)", class: "govuk-label" %>
+  <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
+</div>
+
   <!-- Submit Button -->
   <div class="govuk-form-group">
     <%= form.submit "Submit", class: "govuk-button" %>

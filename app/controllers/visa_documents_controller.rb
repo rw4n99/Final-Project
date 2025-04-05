@@ -43,12 +43,12 @@ class VisaDocumentsController < ApplicationController
   end
 
   private
-
   def visa_document_params
     params.require(:visa_document).permit(
       :eligibility,
       :address,
-      :visa_application_form # Include the file in the permitted params
+      :visa_application_form,
+      :photograph_id,
     )
   end
 end
