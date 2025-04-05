@@ -23,7 +23,7 @@
         <% end %>
       </dd>
     </div>
-
+    
     <%# Photograph ID %>
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
@@ -44,6 +44,135 @@
         <% end %>
       </dd>
     </div>
+
+    <%# Passport %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Passport
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.passport.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.passport.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No passport submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+    <%# nombramiento %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Nombramiento
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.nombramiento.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.nombramiento.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No nombramiento submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+    <%# health_insurance %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Health Insurance
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.health_insurance.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.health_insurance.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No health insurance submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+        <%# criminal_record %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Criminal Record Check (ACRO)
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.criminal_record.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.criminal_record.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No criminal record scheck submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+    <%# medical_certificate %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Medical Certificate
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.medical_certificate.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.medical_certificate.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No medical certificate submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+        <%# visa_application_payment %>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Visa Application Payment
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <% if visa_document.visa_application_payment.attached? %>
+          <p class="govuk-body">
+            <%= visa_document.visa_application_payment.filename.to_s %><br>
+            <%= link_to "Download", rails_blob_path(visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
+            <%= link_to "Edit", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% else %>
+          <p class="govuk-body">
+            No proof of payment submitted.
+            <%= link_to "Upload now", edit_visa_document_path(visa_document), class: "govuk-link" %>
+          </p>
+        <% end %>
+      </dd>
+    </div>
+
+
+    <%= link_to "Delete", remove_attachment_visa_document_path(visa_document, attachment: "visa_application_form"), method: :delete, data: { confirm: "Are you sure?" }, class: "govuk-link" %>
 
   </dl>
 <% end %>

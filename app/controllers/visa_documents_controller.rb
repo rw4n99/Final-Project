@@ -49,6 +49,25 @@ class VisaDocumentsController < ApplicationController
       :address,
       :visa_application_form,
       :photograph_id,
+      :passport,
+      :nombramiento,
+      :health_insurance,
+      :criminal_record,
+      :medical_certificate,
+      :visa_application_payment,
     )
+  end
+
+  def remove_attachment
+    document = VisaDocument.find(params[:id])
+  
+    case params[:attachment]
+    when "visa_application_form"
+      document.visa_application_form.purge
+    when "photograph_id"
+      document.photograph_id.purge
+    end
+  
+    redirect_to visa_documents_path, notice: "Attachment removed"
   end
 end
