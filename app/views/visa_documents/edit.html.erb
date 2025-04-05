@@ -1,3 +1,4 @@
+<!-- filepath: /Users/rowan.godfrey/GitHub/ruby-grad-training/Final-Project/Inside/app/views/visa_documents/edit.html.erb -->
 <%= form_with(model: @visa_document, url: visa_document_path(@visa_document), local: true, multipart: true) do |form| %>
   <h1 class="govuk-heading-l">Edit Visa Document</h1>
 
@@ -12,7 +13,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :visa_application_form, "Upload New Visa Application Form", class: "govuk-label" %>
     <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
@@ -29,7 +30,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :photograph_id, "Upload New Photograph ID", class: "govuk-label" %>
     <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
@@ -46,7 +47,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :passport, "Upload New Passport", class: "govuk-label" %>
     <%= form.file_field :passport, class: "govuk-file-upload" %>
@@ -63,7 +64,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :nombramiento, "Upload New Nombramiento", class: "govuk-label" %>
     <%= form.file_field :nombramiento, class: "govuk-file-upload" %>
@@ -80,7 +81,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :health_insurance, "Upload New Health Insurance", class: "govuk-label" %>
     <%= form.file_field :health_insurance, class: "govuk-file-upload" %>
@@ -97,7 +98,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :criminal_record, "Upload New Criminal Record", class: "govuk-label" %>
     <%= form.file_field :criminal_record, class: "govuk-file-upload" %>
@@ -114,7 +115,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :medical_certificate, "Upload New Medical Certificate", class: "govuk-label" %>
     <%= form.file_field :medical_certificate, class: "govuk-file-upload" %>
@@ -131,7 +132,7 @@
         </div>
       </div>
     <% else %>
-      <p>No document uploaded</p>
+      <p class="govuk-body">No document uploaded</p>
     <% end %>
     <%= form.label :visa_application_payment, "Upload New Visa Application Payment", class: "govuk-label" %>
     <%= form.file_field :visa_application_payment, class: "govuk-file-upload" %>
