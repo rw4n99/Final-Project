@@ -249,7 +249,13 @@
                 </tbody>
               </table>
             <% end %>
-            
+                <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "govuk-button govuk-button--secondary" %>
+          </div>
+        <% else %>
+          <div class="govuk-body">
+            <p class="govuk-body">
+              <%= link_to "Sign in", new_user_session_path, class: "govuk-button" %>
+            </p>
           </div>
         <% end %>
       </div>
