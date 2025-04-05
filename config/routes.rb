@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   # Visa Applications Routes (only necessary actions)
   resources :visa_documents, only: [:index,:new, :create, :edit, :update]
 
+  resources :visa_documents do
+    member do
+      delete :remove_attachment
+    end
+  end
+
   # Journals Routes
   resources :journals, only: [:create, :new, :destroy]
 
