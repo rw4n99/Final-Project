@@ -1,0 +1,139 @@
+cy:
+  languages:
+    en: "Saesneg"
+    es: "Sbaeneg"
+  inset: 
+    welsh: "Mae'r canllaw hwn hefyd ar gael yn Gymraeg. I weld y fersiwn Gymraeg, "
+  accessibility: 
+    skip: "Neidio i'r prif gynnwys"
+  alpha_service:
+    alpha: "Alpha"
+    text: "Gwasanaeth newydd yw hwn - bydd eich adborth yn ein helpu i'w wella."
+  cookie_banner:
+    title: "Cwcis"
+    message: "Mae'r wefan hon yn defnyddio cwcis i sicrhau eich bod yn cael y profiad gorau ar ein gwefan."
+    accept: "Derbyn cwcis"
+    decline: "Gwrthod cwcis"
+  branding:
+    title: "GoGlobal"
+    tagline: "Eich porth i gyfleoedd byd-eang"
+    description: "Yn eich cysylltu â'r byd"
+  navigation:
+    start: "Dechrau cais newydd"
+    track: "Olrhain eich ceisiadau presennol"
+    help: "Gofyn am gymorth"
+    back: "Yn ôl"
+    more_info: "Darganfyddwch fwy am y dogfennau sydd angen eu huwchlwytho"
+  footer:
+    help: "Cymorth"
+    cookies: "Cwcis"
+    terms: "Telerau ac amodau"
+    more_info: "Gwasanaeth GoGlobal"
+    copyright: "© 2025 Rowan Godfrey"
+  auth:
+    title: "Creu cyfrif"
+    intro: "Crëwch gyfrif i ddechrau a rheoli eich cais."
+    email: "E-bost"
+    password: "Cyfrinair"
+    confirm_password: "Cadarnhau cyfrinair"
+    sign_up_button: "Cofrestru"
+    already_have_account: "Oes gennych chi gyfrif eisoes?"
+    sign_in_link: "Mewngofnodi"
+    sign_up_no_account: "Does gennych chi gyfrif? Cofrestrwch yma"
+    first_name: "Enw cyntaf"
+    last_name: "Cyfenw"
+  sign_in:
+    title: "Mewngofnodi i'ch cyfrif"
+    intro: "Mewngofnodwch i reoli neu ddechrau eich cais."
+    sign_in_button: "Mewngofnodi"
+    forgot_password: "Wedi anghofio eich cyfrinair?"
+    remember: "Cofiwch fi"
+  forgot_password:
+    title: "Wedi anghofio eich cyfrinair?"
+    intro: "Rhowch eich cyfeiriad e-bost i ailosod eich cyfrinair."
+    reset_button: "Anfon dolen ailosod"
+    back_to_sign_in: "Yn ôl i fewngofnodi"
+  index:
+    title:
+      signed_in: "Croeso, "
+      signed_out: "Croeso i GoGlobal"
+    intro: "Eich porth i gyfleoedd byd-eang"
+    start: "Dechrau cais newydd"
+    track: "Olrhain eich ceisiadau presennol"
+    help: "Gofyn am gymorth"
+    not_auth: "Er mwyn defnyddio'r gwasanaeth hwn, rhaid i chi "
+    sign_in_link: "fewngofnodi"
+    block_text: "Mae GoGlobal yn wasanaeth sydd wedi’i gynllunio i’ch helpu i wneud cais am fisa neu drwydded i weithio neu astudio dramor. Ar hyn o bryd rydym yn cam datblygu alpha, ac mae’r gwasanaeth hwn ar gyfer deiliaid pasbort y DU sydd eisiau gwneud cais am fisa myfyriwr yn Sbaen."
+    block_text_2: "Gall gwneud cais am fisa fod yn broses gymhleth, ac rydym yma i’ch helpu ar bob cam o’r ffordd. Bydd y gwasanaeth hwn yn eich galluogi i uwchlwytho eich dogfennau ac olrhain eu statws."
+    start_button: "Uwchlwytho eich dogfennau."
+  related_content:
+    title: "Cynnwys cysylltiedig"
+  errors:
+    sign_up:
+      title: "Bu problem"
+      intro: "Gwiriwch y gwallau isod a cheisiwch eto."
+      email: "Rhowch gyfeiriad e-bost cywir"
+      password: "Rhowch gyfrinair gyda lleiafswm o 6 nod"
+      confirm_password: "Nid yw'r cyfrineiriau'n cyfateb"
+  table:
+    document: "Dogfen"
+    status: "Statws"
+    action: "Gweithred"
+    delete: "Dileu"
+  upload:
+    visa_application_form: "Ffurflen gais am fisa"
+    passport: "Pasbort"
+    photo: "Llun ID pasbort"
+    nombramiento: "Llythyr penodi"
+    health_insurance: "Yswiriant iechyd"
+    criminal_record: "Tystysgrif cofnod troseddol"
+    medical_certificate: "Tystysgrif feddygol"
+    visa_application_payment: "Taliad cais am fisa"
+    download: "Lawrlwytho"
+    edit: "Golygu"
+  no:
+    visa_application_form: "Dim ffurflen gais am fisa"
+    passport: "Dim pasbort wedi’i uwchlwytho"
+    photo: "Dim llun ID pasbort"
+    nombramiento: "Dim llythyr penodi wedi’i uwchlwytho"
+    health_insurance: "Dim yswiriant iechyd wedi’i uwchlwytho"
+    criminal_record: "Dim tystysgrif cofnod troseddol wedi’i uwchlwytho"
+    medical_certificate: "Dim tystysgrif feddygol wedi’i uwchlwytho"
+    visa_application_payment: "Dim taliad cais am fisa wedi’i uwchlwytho"
+    document: "Dim dogfen wedi’i uwchlwytho"
+  pages:
+    title: "Gwybodaeth am Ddogfennau Fisa"
+    subtitle: "Sicrhewch fod gennych yr holl ddogfennau angenrheidiol ar gyfer eich cais am fisa."
+    intro: "I wneud cais am fisa, bydd angen i chi uwchlwytho’r dogfennau canlynol:"
+    documents:
+      visa_application_form:
+        title: "Ffurflen gais am fisa"
+        text: "Ffurflen gais wedi’i llenwi a’i llofnodi gan y conswliaeth neu lysgenhadaeth."
+      passport:
+        title: "Pasbort"
+        text: "Pasbort dilys gyda lleiafswm o 6 mis o ddilysrwydd ar ôl."
+      photo:
+        title: "Llun ID pasbort"
+        text: "Llun diweddar maint pasbort (cefndir gwyn, heb sbectol, pen heb ei orchuddio)."
+      nombramiento:
+        title: "Llythyr penodi"
+        text: "Llythyr penodi swyddogol gan y sefydliad addysgol."
+      health_insurance:
+        title: "Yswiriant iechyd"
+        text: "Tystiolaeth o yswiriant iechyd ar gyfer cyfnod eich arhosiad."
+      criminal_record:
+        title: "Tystysgrif cofnod troseddol"
+        text: "Tystysgrif cofnod troseddol gan eich gwlad gartref."
+      medical_certificate:
+        title: "Tystysgrif feddygol"
+        text: "Tystysgrif feddygol yn cadarnhau eich bod mewn iechyd da."
+      visa_application_payment:
+        title: "Taliad cais am fisa"
+        text: "Tystiolaeth o daliad ffi’r cais am fisa."
+  edit:
+    title: "Golygu Dogfennau Fisa"
+    document_type: "Math o ddogfen"
+    current: "Math o Ddogfen"
+    upload: "Uwchlwytho Ffeil Newydd"
+    word: "Uwchlwytho"
+    update: "Diweddaru Dogfen"
