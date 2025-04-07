@@ -10,7 +10,7 @@
             <%= t('index.title.signed_out') %>
           <% end %>
         </h1>
-        <div class="govuk-inset-text">
+        <div class="govuk-inset-text" id="main-content">
           <%= t('inset.welsh') %>
         </div>
       </div>
@@ -30,11 +30,11 @@
 
         <% if user_signed_in? %>
           <div class="govuk-body">
-            <p class="govuk-body">
-              <a href="<%= '/visa_documents/new' %>" class="govuk-link">
-                <%= t('index.start_button') %>
-              </a>
-            </p>
+          <p class="govuk-body">
+          <a href="<%= '/visa_documents/new' %>" class="govuk-link" aria-label="Start the visa document submission process">
+            <%= t('index.start_button') %>
+          </a>
+        </p>
           
 
           <div class="govuk-body">
@@ -51,6 +51,7 @@
                     <th scope="col">Document</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
+                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,10 +62,13 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'visa_application_form'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'visa_application_form'), 
-                        method: :delete,
-                        data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
+                      </td>
+                       <td class="govuk_table_cell">
+                       <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'visa_application_form'), 
+                       method: :delete,
+                       data: { turbo_confirm: "Are you sure you want to delete this document?" },
+                       class: "govuk-button govuk-button--warning",
+                       aria: { describedby: "delete-document-warning" } %>
                       </td>
                     </tr>
                   <% else %>
@@ -84,11 +88,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'photograph_id'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'photograph_id'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -107,11 +114,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'passport'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'passport'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -130,11 +140,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'nombramiento'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'nombramiento'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -153,11 +166,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'health_insurance'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'health_insurance'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -176,11 +192,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'criminal_record'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'criminal_record'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -199,11 +218,14 @@
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
                         <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'medical_certificate'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
                         <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'medical_certificate'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--warning",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
@@ -222,11 +244,14 @@
                       <td class="govuk-table__cell">
                       <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
                       <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'visa_application_payment'), class: "govuk-link" %> |
+                      </td>
+                      <td class="govuk_table_cell">
                       <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'visa_application_payment'), 
-                            method: :delete,
-                            data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                            class: "govuk-link govuk-link--destructive" %>
-                    </td>
+                      method: :delete,
+                      data: { turbo_confirm: "Are you sure you want to delete this document?" },
+                      class: "govuk-button govuk-button--warning",
+                      aria: { describedby: "delete-document-warning" } %>
+                     </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
