@@ -52,6 +52,7 @@ en:
     track: "Track your current applications"
     help: "Ask for help"
     back": "Back"
+    more_info: "To see more information about the types of documents you need to upload, please click here"
   footer:
     help: "Help"
     cookies: "Cookies"
@@ -103,4 +104,5 @@ en:
       email: "Please enter a correct email address"
       password: "Please enter a password with at least 6 characters"
       confirm_password: "Passwords do not match"
+  
     
