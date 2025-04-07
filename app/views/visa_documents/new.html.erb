@@ -1,4 +1,3 @@
-
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
@@ -13,85 +12,88 @@
       <!-- National Visa Application Form -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :visa_application_form, "National Visa Application Form", class: "govuk-label" %>
+          <%= form.label :visa_application_form, "National Visa Application Form", class: "govuk-label", aria: { label: "National Visa Application Form" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
+          <%= form.file_field :visa_application_form, class: "govuk-file-upload", aria: { labelledby: "visa_application_form_label" } %>
         </td>
       </tr>
 
       <!-- Proof of ID -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :photograph_id, "Photograph ID (e.g. Passport-style photo)", class: "govuk-label" %>
+          <%= form.label :photograph_id, "Photograph ID (e.g. Passport-style photo)", class: "govuk-label", aria: { label: "Photograph ID (e.g. Passport-style photo)" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
+          <%= form.file_field :photograph_id, class: "govuk-file-upload", aria: { labelledby: "photograph_id_label" } %>
         </td>
       </tr>
 
       <!-- Passport -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :passport, "Passport", class: "govuk-label" %>
+          <%= form.label :passport, "Passport", class: "govuk-label", aria: { label: "Passport" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :passport, class: "govuk-file-upload" %>
+          <%= form.file_field :passport, class: "govuk-file-upload", aria: { labelledby: "passport_label" } %>
         </td>
       </tr>
 
       <!-- Nombramiento -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :nombramiento, "Nombramiento", class: "govuk-label" %>
+          <%= form.label :nombramiento, "Nombramiento", class: "govuk-label", aria: { label: "Nombramiento" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :nombramiento, class: "govuk-file-upload" %>
+          <%= form.file_field :nombramiento, class: "govuk-file-upload", aria: { labelledby: "nombramiento_label" } %>
         </td>
       </tr>
 
       <!-- Health Insurance -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :health_insurance, "Health Insurance", class: "govuk-label" %>
+          <%= form.label :health_insurance, "Health Insurance", class: "govuk-label", aria: { label: "Health Insurance" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :health_insurance, class: "govuk-file-upload" %>
+          <%= form.file_field :health_insurance, class: "govuk-file-upload", aria: { labelledby: "health_insurance_label" } %>
         </td>
       </tr>
 
       <!-- Criminal Record Check -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :criminal_record, "Criminal Record Check", class: "govuk-label" %>
+          <%= form.label :criminal_record, "Criminal Record Check", class: "govuk-label", aria: { label: "Criminal Record Check" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :criminal_record, class: "govuk-file-upload" %>
+          <%= form.file_field :criminal_record, class: "govuk-file-upload", aria: { labelledby: "criminal_record_label" } %>
         </td>
       </tr>
 
       <!-- Medical Certificate -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :medical_certificate, "Medical Certificate", class: "govuk-label" %>
+          <%= form.label :medical_certificate, "Medical Certificate", class: "govuk-label", aria: { label: "Medical Certificate" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :medical_certificate, class: "govuk-file-upload" %>
+          <%= form.file_field :medical_certificate, class: "govuk-file-upload", aria: { labelledby: "medical_certificate_label" } %>
         </td>
       </tr>
 
       <!-- Visa Application Payment -->
       <tr>
         <td class="govuk-table__cell">
-          <%= form.label :visa_application_payment, "Visa application payment", class: "govuk-label" %>
+          <%= form.label :visa_application_payment, "Visa application payment", class: "govuk-label", aria: { label: "Visa application payment" } %>
         </td>
         <td class="govuk-table__cell">
-          <%= form.file_field :visa_application_payment, class: "govuk-file-upload" %>
+          <%= form.file_field :visa_application_payment, class: "govuk-file-upload", aria: { labelledby: "visa_application_payment_label" } %>
         </td>
       </tr>
     </tbody>
   </table>
 
       <!-- Submit Button -->
-      <%= form.submit "Submit", class: "govuk-button" %>
+      <%= form.submit "Submit", class: "govuk-button", aria: { label: "Submit visa document upload form" } %>
 <% end %>
+</div>
+</main>
+</div>
