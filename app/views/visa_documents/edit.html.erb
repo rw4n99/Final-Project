@@ -1,144 +1,49 @@
-<!-- filepath: /Users/rowan.godfrey/GitHub/ruby-grad-training/Final-Project/Inside/app/views/visa_documents/edit.html.erb -->
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
 <%= form_with(model: @visa_document, url: visa_document_path(@visa_document), local: true, multipart: true) do |form| %>
   <h1 class="govuk-heading-l">Edit Visa Document</h1>
 
-  <!-- Visa Application Form -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Visa Application Form</h2>
-    <% if @visa_document.visa_application_form.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.visa_application_form.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :visa_application_form, "Upload New Visa Application Form", class: "govuk-label" %>
-    <%= form.file_field :visa_application_form, class: "govuk-file-upload" %>
-  </div>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Document Type</th>
+        <th class="govuk-table__header">Current File</th>
+        <th class="govuk-table__header">Upload New File</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
 
-  <!-- Photograph ID -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Photograph ID</h2>
-    <% if @visa_document.photograph_id.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.photograph_id.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :photograph_id, "Upload New Photograph ID", class: "govuk-label" %>
-    <%= form.file_field :photograph_id, class: "govuk-file-upload" %>
-  </div>
+      <% {
+        "Visa Application Form" => :visa_application_form,
+        "Photograph ID" => :photograph_id,
+        "Passport" => :passport,
+        "Nombramiento" => :nombramiento,
+        "Health Insurance" => :health_insurance,
+        "Criminal Record" => :criminal_record,
+        "Medical Certificate" => :medical_certificate,
+        "Visa Application Payment" => :visa_application_payment
+      }.each do |label, field| %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= label %></td>
+          <td class="govuk-table__cell">
+            <% if @visa_document.send(field).attached? %>
+              <%= @visa_document.send(field).filename.to_s %><br>
+              <%= link_to "Download", rails_blob_path(@visa_document.send(field), disposition: "attachment"), class: "govuk-link" %>
+            <% else %>
+              <span class="govuk-body">No document uploaded</span>
+            <% end %>
+          </td>
+          <td class="govuk-table__cell">
+            <%= form.label field, "Upload New", class: "govuk-label" %><br>
+            <%= form.file_field field, class: "govuk-file-upload" %>
+          </td>
+        </tr>
+      <% end %>
 
-  <!-- Passport -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Passport</h2>
-    <% if @visa_document.passport.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.passport.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :passport, "Upload New Passport", class: "govuk-label" %>
-    <%= form.file_field :passport, class: "govuk-file-upload" %>
-  </div>
+    </tbody>
+  </table>
 
-  <!-- Nombramiento -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Nombramiento</h2>
-    <% if @visa_document.nombramiento.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.nombramiento.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :nombramiento, "Upload New Nombramiento", class: "govuk-label" %>
-    <%= form.file_field :nombramiento, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Health Insurance -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Health Insurance</h2>
-    <% if @visa_document.health_insurance.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.health_insurance.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :health_insurance, "Upload New Health Insurance", class: "govuk-label" %>
-    <%= form.file_field :health_insurance, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Criminal Record -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Criminal Record</h2>
-    <% if @visa_document.criminal_record.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.criminal_record.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :criminal_record, "Upload New Criminal Record", class: "govuk-label" %>
-    <%= form.file_field :criminal_record, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Medical Certificate -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Medical Certificate</h2>
-    <% if @visa_document.medical_certificate.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.medical_certificate.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :medical_certificate, "Upload New Medical Certificate", class: "govuk-label" %>
-    <%= form.file_field :medical_certificate, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Visa Application Payment -->
-  <div class="govuk-form-group">
-    <h2 class="govuk-heading-m">Visa Application Payment</h2>
-    <% if @visa_document.visa_application_payment.attached? %>
-      <div class="govuk-summary-list__row">
-        <div class="govuk-summary-list__value">
-          <%= @visa_document.visa_application_payment.filename.to_s %>
-          <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %>
-        </div>
-      </div>
-    <% else %>
-      <p class="govuk-body">No document uploaded</p>
-    <% end %>
-    <%= form.label :visa_application_payment, "Upload New Visa Application Payment", class: "govuk-label" %>
-    <%= form.file_field :visa_application_payment, class: "govuk-file-upload" %>
-  </div>
-
-  <!-- Submit Button -->
   <div class="govuk-form-group">
     <%= form.submit "Update Document", class: "govuk-button" %>
   </div>
