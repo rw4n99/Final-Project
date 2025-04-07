@@ -2,27 +2,27 @@
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
 <%= form_with(model: @visa_document, url: visa_document_path(@visa_document), local: true, multipart: true) do |form| %>
-  <h1 class="govuk-heading-l">Edit Visa Document</h1>
+  <h1 class="govuk-heading-l"><%= t('edit.title') %></h1>
 
   <table class="govuk-table">
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
-        <th class="govuk-table__header">Document Type</th>
-        <th class="govuk-table__header">Current File</th>
-        <th class="govuk-table__header">Upload New File</th>
+        <th class="govuk-table__header"><%= t('edit.document_type') %></th>
+        <th class="govuk-table__header"><%= t('edit.current') %></th>
+        <th class="govuk-table__header"><%= t('edit.upload') %></th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
 
       <% {
-        "Visa Application Form" => :visa_application_form,
+        t('upload.visa_application_form') => :visa_application_form,
         "Photograph ID" => :photograph_id,
-        "Passport" => :passport,
-        "Nombramiento" => :nombramiento,
-        "Health Insurance" => :health_insurance,
-        "Criminal Record" => :criminal_record,
-        "Medical Certificate" => :medical_certificate,
-        "Visa Application Payment" => :visa_application_payment
+        t('upload.passport') => :passport,
+        t('upload.nombramiento') => :nombramiento,
+        t('upload.health_insurance') => :health_insurance,
+        t('upload.criminal_record') => :criminal_record,
+        t('upload.medical_certificate') => :medical_certificate,
+        t('upload.visa_application_payment') => :visa_application_payment
       }.each do |label, field| %>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><%= label %></td>
@@ -31,11 +31,11 @@
               <%= @visa_document.send(field).filename.to_s %><br>
               <%= link_to "Download", rails_blob_path(@visa_document.send(field), disposition: "attachment"), class: "govuk-link" %>
             <% else %>
-              <span class="govuk-body">No document uploaded</span>
+              <span class="govuk-body"><%= t('no.document') %></span>
             <% end %>
           </td>
           <td class="govuk-table__cell">
-            <%= form.label field, "Upload New", class: "govuk-label" %><br>
+            <%= form.label field, t('edit.word'), class: "govuk-label" %><br>
             <%= form.file_field field, class: "govuk-file-upload" %>
           </td>
         </tr>
@@ -45,6 +45,6 @@
   </table>
 
   <div class="govuk-form-group">
-    <%= form.submit "Update Document", class: "govuk-button" %>
+    <%= form.submit t('edit.update'), class: "govuk-button" %>
   </div>
 <% end %>

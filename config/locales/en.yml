@@ -129,3 +129,40 @@ en:
     criminal_record: "No criminal record check uploaded"
     medical_certificate: "No medical certificate uploaded"
     visa_application_payment: "No visa application payment uploaded"
+    document: "No document uploaded"
+  pages:
+    title: "Visa Document Information"
+    subtitle: "Please ensure you have all the required documents ready for your visa application."
+    intro: "To apply for a visa, you will need to upload the following documents:"
+    documents:
+      visa_application_form:
+        title: "Visa application form"
+        text: "Completed and signed application form provided by the consulate or embassy."
+      passport:
+        title: "Passport"
+        text: "A valid passport with at least 6 months of validity remaining."
+      photo:
+        title: "Passport photo ID"
+        text: "Recent passport-sized photo (white background, no glasses, head uncovered)."
+      nombramiento:
+        title: "Nombramiento"
+        text: "Official appointment letter from the educational institution."
+      health_insurance:
+        title: "Health insurance"
+        text: "Proof of health insurance coverage for the duration of your stay."
+      criminal_record:
+        title: "Criminal record check"
+        text: "A criminal record check from your home country."
+      medical_certificate:
+        title: "Medical certificate"
+        text: "Medical certificate confirming you are in good health."
+      visa_application_payment:
+        title: "Visa application payment"
+        text: "Proof of payment for the visa application fee."
+  edit:
+    title: "Edit Visa Documents"
+    document_type: "Document type"
+    current: "Document Type"
+    upload: "Upload New File"
+    word: "Upload"
+    update: "Update Document"
