@@ -224,7 +224,7 @@
 
                   <% if @visa_document.visa_application_payment.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Medical Certificate</td>
+                      <td class="govuk-table__cell">Proof of payment</td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_payment.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
