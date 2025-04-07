@@ -1,6 +1,6 @@
 class VisaDocumentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_visa_document, only: [:edit, :update]
+  before_action :set_visa_document, only: [:edit, :update, :destroy]
 
   def new
     @visa_document = current_user.visa_documents.build
@@ -49,6 +49,18 @@ class VisaDocumentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    document_type = params[:document_type]
+    Rails.logger.info "Attempting to delete #{document_type} for VisaDocument ID: #{@visa_document.id}"
+    if @visa_document.respond_to?(document_type)
+      @visa_document.send(document_type).purge
+      flash[:notice] = "#{document_type.humanize} was successfully deleted."
+    else
+      flash[:alert] = "Invalid document type."
+    end
+    redirect_to root_path
   end
 
   private
