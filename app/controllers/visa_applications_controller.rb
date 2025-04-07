@@ -1,6 +1,12 @@
 class VisaApplicationsController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_visa_document, only: [:destroy]
+
+def set_visa_document
+  @visa_document = current_user.visa_documents.find(params[:id])
+end
+
   def new
     @visa_application = current_user.visa_applications.build
   end
