@@ -14,16 +14,15 @@
   <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
-  <meta property="og:image" content="YOUR-DOMAIN/images/govuk-opengraph-image.png">
 </head>
 
-<body>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-      
+<body style="background-color: white;">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
   <%= render 'shared/navbar' %>
   <main>
-    <%= yield %>  <!-- This is where page content will be injected -->
+    <%= yield %>
   </main>
 
   <%= render 'shared/footer' %>
