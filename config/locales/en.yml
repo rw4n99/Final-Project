@@ -52,7 +52,7 @@ en:
     track: "Track your current applications"
     help: "Ask for help"
     back": "Back"
-    more_info: "To see more information about the types of documents you need to upload, please click here"
+    more_info: "Find out more about the documents you need to upload"
   footer:
     help: "Help"
     cookies: "Cookies"
@@ -94,7 +94,7 @@ en:
     sign_in_link: "sign in"
     block_text: "GoGlobal is a service designed to help you apply for visas and permits to work or study abroad. We are currently in the alpha stage of development, and this service is only designed for British or UK passport holders wanting to apply for a student visa in Spain."
     block_text_2: "Applying for a visa can be a complex process, and we are here to help you every step of the way. This service will allow you to upload your documents, and track their status."
-    start_button: "Click here to upload your documents."
+    start_button: "Upload your documents."
   related_content:
     title: "Related content"
   errors:
@@ -120,3 +120,12 @@ en:
     visa_application_payment: "Visa application payment"
     download: "Download"
     edit: "Edit"
+  no:
+    visa_application_form: "No visa application form"
+    passport: "No passport uploaded"
+    photo: "No passport photo ID"
+    nombramiento: "No nombramiento uploaded"
+    health_insurance: "No health insurance uploaded"
+    criminal_record: "No criminal record check uploaded"
+    medical_certificate: "No medical certificate uploaded"
+    visa_application_payment: "No visa application payment uploaded"
