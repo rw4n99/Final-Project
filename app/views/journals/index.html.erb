@@ -48,16 +48,16 @@
               <table class="govuk-table">
                 <thead>
                   <tr>
-                    <th scope="col">Document</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col"><%= t('table.document')%></th>
+                    <th scope="col"><%= t('table.status')%></th>
+                    <th scope="col"><%= t('table.action')%></th>
+                    <th scope="col"><%= t('table.delete')%></th>
                   </tr>
                 </thead>
                 <tbody>
                   <% if @visa_document.visa_application_form.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Visa Application Form</td>
+                      <td class="govuk-table__cell"><%= t('upload.visa_application_form')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_form.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
@@ -83,7 +83,7 @@
 
                   <% if @visa_document.photograph_id.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Photographic ID</td>
+                      <td class="govuk-table__cell"><%= t('upload.photograph_id')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.photograph_id.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
@@ -109,7 +109,7 @@
 
                   <% if @visa_document.passport.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Passport</td>
+                      <td class="govuk-table__cell"><%= t('upload.passport')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.passport.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
@@ -135,7 +135,7 @@
 
                   <% if @visa_document.nombramiento.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Nombramiento</td>
+                      <td class="govuk-table__cell"><%= t('upload.nombramiento')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.nombramiento.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
@@ -161,7 +161,7 @@
 
                   <% if @visa_document.health_insurance.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Health Insurance</td>
+                      <td class="govuk-table__cell"><%= t('upload.health_insurance')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.health_insurance.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
@@ -187,7 +187,7 @@
 
                   <% if @visa_document.criminal_record.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Criminal Record</td>
+                      <td class="govuk-table__cell"><%= t('upload.criminal_record')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.criminal_record.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
@@ -213,7 +213,7 @@
 
                   <% if @visa_document.medical_certificate.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Medical Certificate</td>
+                      <td class="govuk-table__cell"><%= t('upload.medical_certificate')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.medical_certificate.filename.to_s %></td>
                       <td class="govuk-table__cell">
                         <%= link_to "Download", rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
@@ -239,7 +239,7 @@
 
                   <% if @visa_document.visa_application_payment.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Proof of payment</td>
+                      <td class="govuk-table__cell"><%= t('upload.visa_application_payment')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_payment.filename.to_s %></td>
                       <td class="govuk-table__cell">
                       <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |

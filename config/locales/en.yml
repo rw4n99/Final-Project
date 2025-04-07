@@ -104,5 +104,19 @@ en:
       email: "Please enter a correct email address"
       password: "Please enter a password with at least 6 characters"
       confirm_password: "Passwords do not match"
-  
-    
+  table:
+    document: "Document"
+    status: "Status"
+    action: "Action"
+    delete: "Delete"
+  upload:
+    visa_application_form: "Visa application form"
+    passport: "Passport"
+    photo: "Passport photo ID"
+    nombramiento: "Nombramiento"
+    health_insurance: "Health insurance"
+    criminal_record: "Criminal record check"
+    medical_certificate: "Medical certificate"
+    visa_application_payment: "Visa application payment"
+    download: "Download"
+    edit: "Edit"
