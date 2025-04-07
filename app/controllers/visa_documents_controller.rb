@@ -16,8 +16,6 @@ class VisaDocumentsController < ApplicationController
     if @visa_document.save
       if @visa_document.visa_application_form.attached?
         flash[:notice] = "Document uploaded successfully."
-      else
-        flash[:alert] = "Please upload the National Visa Application Form."
       end
       redirect_to root_path
     else
@@ -56,9 +54,6 @@ class VisaDocumentsController < ApplicationController
     Rails.logger.info "Attempting to delete #{document_type} for VisaDocument ID: #{@visa_document.id}"
     if @visa_document.respond_to?(document_type)
       @visa_document.send(document_type).purge
-      flash[:notice] = "#{document_type.humanize} was successfully deleted."
-    else
-      flash[:alert] = "Invalid document type."
     end
     redirect_to root_path
   end

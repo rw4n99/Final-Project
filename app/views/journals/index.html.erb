@@ -10,7 +10,7 @@
             <%= t('index.title.signed_out') %>
           <% end %>
         </h1>
-        <div class="govuk-inset-text">
+        <div class="govuk-inset-text" id="main-content">
           <%= t('inset.welsh') %>
         </div>
       </div>
@@ -30,11 +30,11 @@
 
         <% if user_signed_in? %>
           <div class="govuk-body">
-            <p class="govuk-body">
-              <a href="<%= '/visa_documents/new' %>" class="govuk-link">
-                <%= t('index.start_button') %>
-              </a>
-            </p>
+          <p class="govuk-body">
+          <a href="<%= '/visa_documents/new' %>" class="govuk-link" aria-label="Start the visa document submission process">
+            <%= t('index.start_button') %>
+          </a>
+        </p>
           
 
           <div class="govuk-body">
@@ -48,23 +48,27 @@
               <table class="govuk-table">
                 <thead>
                   <tr>
-                    <th scope="col">Document</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"><%= t('table.document')%></th>
+                    <th scope="col"><%= t('table.status')%></th>
+                    <th scope="col"><%= t('table.action')%></th>
+                    <th scope="col"><%= t('table.delete')%></th>
                   </tr>
                 </thead>
                 <tbody>
                   <% if @visa_document.visa_application_form.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Visa Application Form</td>
+                      <td class="govuk-table__cell"><%= t('upload.visa_application_form')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_form.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'visa_application_form'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'visa_application_form'), 
-                        method: :delete,
-                        data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'visa_application_form'), class: "govuk-link" %>
+                      </td>
+                       <td class="govuk_table_cell">
+                       <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'visa_application_form'), 
+                       method: :delete,
+                       data: { turbo_confirm: "Are you sure you want to delete this document?" },
+                       class: "govuk-button govuk-button--secondary",
+                       aria: { describedby: "delete-document-warning" } %>
                       </td>
                     </tr>
                   <% else %>
@@ -72,168 +76,189 @@
                       <td class="govuk-table__cell">Visa Application Form</td>
                       <td class="govuk-table__cell">No Visa application submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload visa application form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.photograph_id.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Photographic ID</td>
+                      <td class="govuk-table__cell"><%= t('upload.photograph_id')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.photograph_id.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'photograph_id'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'photograph_id'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'photograph_id'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'photograph_id'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Photographic ID</td>
                       <td class="govuk-table__cell">No Photographic ID submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload photo ID form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.passport.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Passport</td>
+                      <td class="govuk-table__cell"><%= t('upload.passport')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.passport.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'passport'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'passport'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'passport'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'passport'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Passport</td>
                       <td class="govuk-table__cell">No Passport submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload passport form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.nombramiento.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Nombramiento</td>
+                      <td class="govuk-table__cell"><%= t('upload.nombramiento')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.nombramiento.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'nombramiento'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'nombramiento'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'nombramiento'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'nombramiento'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Nombramiento</td>
                       <td class="govuk-table__cell">No Nombramiento submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload nombramiento form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.health_insurance.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Health Insurance</td>
+                      <td class="govuk-table__cell"><%= t('upload.health_insurance')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.health_insurance.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'health_insurance'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'health_insurance'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'health_insurance'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'health_insurance'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Health Insurance</td>
                       <td class="govuk-table__cell">No Health Insurance submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload health insurance form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.criminal_record.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Criminal Record</td>
+                      <td class="govuk-table__cell"><%= t('upload.criminal_record')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.criminal_record.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'criminal_record'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'criminal_record'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'criminal_record'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'criminal_record'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Criminal Record</td>
                       <td class="govuk-table__cell">No Criminal Record submitted</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload criminal record form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.medical_certificate.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Medical Certificate</td>
+                      <td class="govuk-table__cell"><%= t('upload.medical_certificate')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.medical_certificate.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Download", rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'medical_certificate'), class: "govuk-link" %>
-                        <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'medical_certificate'), 
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
+                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'medical_certificate'), class: "govuk-link" %>
+                        </td>
+                        <td class="govuk_table_cell">
+                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'medical_certificate'), 
                         method: :delete,
                         data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                        class: "govuk-link govuk-link--destructive" %>
-                      </td>
+                        class: "govuk-button govuk-button--secondary",
+                        aria: { describedby: "delete-document-warning" } %>
+                       </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">No Medical Certificate attached</td>
                       <td class="govuk-table__cell">No Medical Certificate attached</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload medical certificate form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
 
                   <% if @visa_document.visa_application_payment.attached? %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Proof of payment</td>
+                      <td class="govuk-table__cell"><%= t('upload.visa_application_payment')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_payment.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                      <%= link_to "Download", rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
-                      <%= link_to "Edit", edit_visa_document_path(@visa_document, document_type: 'visa_application_payment'), class: "govuk-link" %> |
-                      <%= button_to "Delete", visa_document_path(@visa_document, document_type: 'visa_application_payment'), 
-                            method: :delete,
-                            data: { turbo_confirm: "Are you sure you want to delete this document?" },
-                            class: "govuk-link govuk-link--destructive" %>
-                    </td>
+                      <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
+                      <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'visa_application_payment'), class: "govuk-link" %> |
+                      </td>
+                      <td class="govuk_table_cell">
+                      <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'visa_application_payment'), 
+                      method: :delete,
+                      data: { turbo_confirm: "Are you sure you want to delete this document?" },
+                      class: "govuk-button govuk-button--secondary",
+                      aria: { describedby: "delete-document-warning" } %>
+                     </td>
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">No Visa Proof of Payment attached</td>
                       <td class="govuk-table__cell">No Visa Proof of Payment attached</td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link" %>
+                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload proof of visa payment form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
