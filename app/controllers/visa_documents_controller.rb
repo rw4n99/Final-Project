@@ -19,7 +19,7 @@ class VisaDocumentsController < ApplicationController
       else
         flash[:alert] = "Please upload the National Visa Application Form."
       end
-      redirect_to visa_documents_path
+      redirect_to root_path
     else
       render :new
     end
@@ -45,7 +45,7 @@ class VisaDocumentsController < ApplicationController
   
     # Save the document and handle errors
     if @visa_document.save
-      redirect_to visa_document_path(@visa_document), notice: 'Document updated successfully'
+      redirect_to root_path
     else
       render :edit
     end
@@ -85,6 +85,6 @@ class VisaDocumentsController < ApplicationController
       document.photograph_id.purge
     end
   
-    redirect_to visa_documents_path, notice: "Attachment removed"
+    redirect_to root_path
   end
 end
