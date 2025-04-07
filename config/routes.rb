@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "pages/new"
   # Devise for authentication
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
 
   # Journals Routes
   resources :journals, only: [:create, :new, :destroy]
+
+  get 'pages/new', to: 'pages#new'
+  # Or, if you want it to be the home page
+  # root 'pages#new'
 
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
