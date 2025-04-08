@@ -1,3 +1,5 @@
+<% content_for :title, t('page_title.home') %>
+
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
@@ -51,7 +53,6 @@
                     <th scope="col"><%= t('table.document')%></th>
                     <th scope="col"><%= t('table.status')%></th>
                     <th scope="col"><%= t('table.action')%></th>
-                    <th scope="col"><%= t('table.delete')%></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -60,8 +61,7 @@
                       <td class="govuk-table__cell"><%= t('upload.visa_application_form')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_form.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'visa_application_form'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_form, disposition: "attachment"), class: "govuk-link" %>
                       </td>
                        <td class="govuk_table_cell">
                        <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'visa_application_form'), 
@@ -75,7 +75,7 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"><%= t('pages.visa_application_form.title')%></td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.visa_application_form.title')%></td>
                       <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
                         <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload visa application form for submission" } %>
@@ -88,8 +88,7 @@
                       <td class="govuk-table__cell"><%= t('upload.photograph_id')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.photograph_id.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'photograph_id'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.photograph_id, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'photograph_id'), 
@@ -115,8 +114,7 @@
                       <td class="govuk-table__cell"><%= t('upload.passport')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.passport.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'passport'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.passport, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'passport'), 
@@ -142,8 +140,7 @@
                       <td class="govuk-table__cell"><%= t('upload.nombramiento')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.nombramiento.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'nombramiento'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.nombramiento, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'nombramiento'), 
@@ -169,8 +166,7 @@
                       <td class="govuk-table__cell"><%= t('upload.health_insurance')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.health_insurance.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'health_insurance'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.health_insurance, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'health_insurance'), 
@@ -196,8 +192,7 @@
                       <td class="govuk-table__cell"><%= t('upload.criminal_record')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.criminal_record.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'criminal_record'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.criminal_record, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'criminal_record'), 
@@ -223,8 +218,7 @@
                       <td class="govuk-table__cell"><%= t('upload.medical_certificate')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.medical_certificate.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %> |
-                        <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'medical_certificate'), class: "govuk-link" %>
+                        <%= link_to t('upload.download'), rails_blob_path(@visa_document.medical_certificate, disposition: "attachment"), class: "govuk-link" %>
                         </td>
                         <td class="govuk_table_cell">
                         <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'medical_certificate'), 
@@ -250,8 +244,7 @@
                       <td class="govuk-table__cell"><%= t('upload.visa_application_payment')%></td>
                       <td class="govuk-table__cell"><%= @visa_document.visa_application_payment.filename.to_s %></td>
                       <td class="govuk-table__cell">
-                      <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %> |
-                      <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'visa_application_payment'), class: "govuk-link" %> |
+                      <%= link_to t('upload.download'), rails_blob_path(@visa_document.visa_application_payment, disposition: "attachment"), class: "govuk-link" %>
                       </td>
                       <td class="govuk_table_cell">
                       <%= button_to t('table.delete'), visa_document_path(@visa_document, document_type: 'visa_application_payment'), 
@@ -273,6 +266,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= link_to t('upload.edit'), edit_visa_document_path(@visa_document, document_type: 'visa_application_payment'), class: "govuk-button govuk-button--secondary" %>
             <% end %>
                 <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "govuk-button govuk-button--secondary" %>
           </div>

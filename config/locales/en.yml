@@ -33,6 +33,14 @@ en:
     es: "Español"
   inset: 
     welsh: "This guide is also availbale in Welsh."
+  page_title: 
+    sign_in: "Sign in to your account"
+    sign_up: "Create an account"
+    home: "View your documents"
+    upload_documents: "Upload Documents"
+    edit_documents: "Edit Documents"
+    read_more: "What you need"
+    edit_documents: "Edit documents"
   accessibility: 
     skip: "Skip to main content"
   alpha_service:
@@ -124,7 +132,7 @@ en:
     medical_certificate: "Medical certificate"
     visa_application_payment: "Visa application payment"
     download: "Download"
-    edit: "Edit"
+    edit: "Edit or change your documents"
     upload: "Upload now"
     not_uploaded: "Not uploaded"
     visa_upload: "Visa document upload"
