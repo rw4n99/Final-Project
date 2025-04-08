@@ -31,9 +31,9 @@
         <% if user_signed_in? %>
           <div class="govuk-body">
           <p class="govuk-body">
-          <a href="<%= '/visa_documents/new' %>" class="govuk-link" aria-label="Start the visa document submission process">
-            <%= t('index.start_button') %>
-          </a>
+          <a href="/<%= I18n.locale %>/visa_documents/new" class="govuk-link" aria-label="Start the visa document submission process">
+          <%= t('index.start_button') %>
+        </a>
         </p>
           
 

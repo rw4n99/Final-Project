@@ -93,6 +93,7 @@ cy:
     edit: "Golygu"
     upload: "Uwchlwytho nawr"
     not_uploaded: "Heb ei uwchlwytho"
+    visa_upload: "Uwchlwytho dogfennau fisa"
   no:
     visa_application_form: "Dim ffurflen gais am fisa"
     passport: "Dim pasbort wedi’i uwchlwytho"

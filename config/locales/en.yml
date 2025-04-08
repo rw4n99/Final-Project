@@ -32,7 +32,7 @@ en:
     en: "English"
     es: "Español"
   inset: 
-    welsh: "This guide is also availbale in Welsh. To view the Welsh version, "
+    welsh: "This guide is also availbale in Welsh."
   accessibility: 
     skip: "Skip to main content"
   alpha_service:
@@ -122,6 +122,7 @@ en:
     edit: "Edit"
     upload: "Upload now"
     not_uploaded: "Not uploaded"
+    visa_upload: "Visa document upload"
   no:
     visa_application_form: "No visa application form"
     passport: "No passport uploaded"

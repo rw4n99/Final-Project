@@ -21,9 +21,17 @@
   <p class="alert"><%= alert %></p>
 
   <%= render 'shared/navbar' %>
-  <header>
-    <%= link_to "English", url_for(locale: :en) %> |
-    <%= link_to "Cymraeg", url_for(locale: :cy) %>
+  <header class="govuk-header__container govuk-width-container">
+    <nav class="govuk-header__navigation" role="navigation" aria-label="Language switcher">
+      <ul class="govuk-header__navigation-list">
+        <li class="govuk-header__navigation-item">
+          <%= link_to "English", url_for(locale: :en), class: "govuk-link" %>
+        </li>
+        <li class="govuk-header__navigation-item">
+          <%= link_to "Cymraeg", url_for(locale: :cy), class: "govuk-link" %>
+        </li>
+      </ul>
+    </nav>
   </header>
   <main>
     <%= yield %>
