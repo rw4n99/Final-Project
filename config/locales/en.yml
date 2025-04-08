@@ -109,6 +109,11 @@ en:
     status: "Status"
     action: "Action"
     delete: "Delete"
+  aria:
+    upload: "Upload"
+    delete: "Delete"
+    edit: "Edit"
+    download: "Download"
   upload:
     visa_application_form: "Visa application form"
     passport: "Passport"

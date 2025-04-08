@@ -80,6 +80,11 @@ cy:
     status: "Statws"
     action: "Gweithred"
     delete: "Dileu"
+  aria:
+    upload: "Uwchlwytho dogfennau"
+    delete: "Dileu dogfen"
+    edit: "Golygu dogfen"
+    download: "Lawrlwytho dogfen"
   upload:
     visa_application_form: "Ffurflen gais am fisa"
     passport: "Pasbort"
