@@ -91,6 +91,8 @@ cy:
     visa_application_payment: "Taliad cais am fisa"
     download: "Lawrlwytho"
     edit: "Golygu"
+    upload: "Uwchlwytho nawr"
+    not_uploaded: "Heb ei uwchlwytho"
   no:
     visa_application_form: "Dim ffurflen gais am fisa"
     passport: "Dim pasbort wedi’i uwchlwytho"
@@ -100,11 +102,12 @@ cy:
     criminal_record: "Dim tystysgrif cofnod troseddol wedi’i uwchlwytho"
     medical_certificate: "Dim tystysgrif feddygol wedi’i uwchlwytho"
     visa_application_payment: "Dim taliad cais am fisa wedi’i uwchlwytho"
-    document: "Dim dogfen wedi’i uwchlwytho"
+    document: "Dim dogfen wedii uwchlwytho"
   pages:
     title: "Gwybodaeth am Ddogfennau Fisa"
     subtitle: "Sicrhewch fod gennych yr holl ddogfennau angenrheidiol ar gyfer eich cais am fisa."
     intro: "I wneud cais am fisa, bydd angen i chi uwchlwytho’r dogfennau canlynol:"
+    not_submitted: "Nid ydych wedi cyflwyno'r dogfennau canlynol:"
     documents:
       visa_application_form:
         title: "Ffurflen gais am fisa"

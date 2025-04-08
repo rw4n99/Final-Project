@@ -39,9 +39,9 @@
 
           <div class="govuk-body">
             <p class="govuk-body">
-            <a href="<%= '/pages/new' %>" class="govuk-link">
-            <%= t('navigation.more_info') %>
-          </a>
+            <a href="<%= url_for(locale: I18n.locale, controller: 'pages', action: 'new') %>" class="govuk-link">
+              <%= t('navigation.more_info') %>
+            </a>
             </p>
 
             <% if @visa_document %>
@@ -73,10 +73,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Visa Application Form</td>
-                      <td class="govuk-table__cell">No Visa application submitted</td>
+                      <td class="govuk-table__cell"><%= t('pages.visa_application_form.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload visa application form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload visa application form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -99,10 +99,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Photographic ID</td>
-                      <td class="govuk-table__cell">No Photographic ID submitted</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.photo.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload photo ID form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload photo ID form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -125,10 +125,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Passport</td>
-                      <td class="govuk-table__cell">No Passport submitted</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.passport.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload passport form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload passport form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -151,10 +151,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Nombramiento</td>
-                      <td class="govuk-table__cell">No Nombramiento submitted</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.nombramiento.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload nombramiento form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload nombramiento form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -177,10 +177,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Health Insurance</td>
-                      <td class="govuk-table__cell">No Health Insurance submitted</td>
+                      <td class="govuk-table__cell"> <%= t('pages.documents.health_insurance.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload health insurance form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload health insurance form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -203,10 +203,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Criminal Record</td>
-                      <td class="govuk-table__cell">No Criminal Record submitted</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.criminal_record.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload criminal record form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload criminal record form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -229,10 +229,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">No Medical Certificate attached</td>
-                      <td class="govuk-table__cell">No Medical Certificate attached</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.medical_certificate.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload medical certificate form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload medical certificate form for submission" } %>
                       </td>
                     </tr>
                   <% end %>
@@ -255,10 +255,10 @@
                     </tr>
                   <% else %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">No Visa Proof of Payment attached</td>
-                      <td class="govuk-table__cell">No Visa Proof of Payment attached</td>
+                      <td class="govuk-table__cell"><%= t('pages.documents.visa_application_payment.title')%></td>
+                      <td class="govuk-table__cell"><%= t('upload.not_uploaded')%></td>
                       <td class="govuk-table__cell">
-                        <%= link_to "Upload now", edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload proof of visa payment form for submission" } %>
+                        <%= link_to t('upload.upload'), edit_visa_document_path(@visa_document), class: "govuk-link", aria: { label: "Upload proof of visa payment form for submission" } %>
                       </td>
                     </tr>
                   <% end %>

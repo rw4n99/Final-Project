@@ -120,6 +120,8 @@ en:
     visa_application_payment: "Visa application payment"
     download: "Download"
     edit: "Edit"
+    upload: "Upload now"
+    not_uploaded: "Not uploaded"
   no:
     visa_application_form: "No visa application form"
     passport: "No passport uploaded"
@@ -134,6 +136,7 @@ en:
     title: "Visa Document Information"
     subtitle: "Please ensure you have all the required documents ready for your visa application."
     intro: "To apply for a visa, you will need to upload the following documents:"
+    not_submitted: "You have not submitted any documents yet."
     documents:
       visa_application_form:
         title: "Visa application form"
