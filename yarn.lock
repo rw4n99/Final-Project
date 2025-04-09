@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@playwright/test@^1.51.1":
+  version "1.51.1"
+  resolved "https://registry.npmjs.org/@playwright/test/-/test-1.51.1.tgz"
+  integrity sha512-nM+kEaTSAoVlXmMPH10017vn3FSiFqr/bh4fKg9vmAdMfd9SDqRZNvPSiAHADc/itWak+qPvMPZQOPwCBW7k7Q==
+  dependencies:
+    playwright "1.51.1"
+
 "@popperjs/core@^2.11.8":
   version "2.11.8"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
@@ -12,7 +19,26 @@ bootstrap@^5.3.3:
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.3.tgz"
   integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
 
+fsevents@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+
 govuk-frontend@^5.9.0:
   version "5.9.0"
   resolved "https://registry.npmjs.org/govuk-frontend/-/govuk-frontend-5.9.0.tgz"
   integrity sha512-8NzmyoDtRFYyHs413DfNPR8Zo6qw6Q02Mruxml/Yfy+EueaOI/JZ4gVM8d0pqzJmTiMcJuHhvxqYEgBRmqeoyA==
+
+playwright-core@1.51.1:
+  version "1.51.1"
+  resolved "https://registry.npmjs.org/playwright-core/-/playwright-core-1.51.1.tgz"
+  integrity sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw==
+
+playwright@^1.51.1, playwright@1.51.1:
+  version "1.51.1"
+  resolved "https://registry.npmjs.org/playwright/-/playwright-1.51.1.tgz"
+  integrity sha512-kkx+MB2KQRkyxjYPc3a0wLZZoDczmppyGJIvQ43l+aZihkaVvmu/21kiyaHeHjiFxjxNNFnUncKmcGIyOojsaw==
+  dependencies:
+    playwright-core "1.51.1"
+  optionalDependencies:
+    fsevents "2.3.2"

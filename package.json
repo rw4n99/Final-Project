@@ -3,5 +3,9 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "govuk-frontend": "^5.9.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "playwright": "^1.51.1"
   }
 }
