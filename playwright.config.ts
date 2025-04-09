@@ -5,6 +5,8 @@ export default defineConfig({
   use: {
     headless: true,
     browserName: 'chromium',
-  },
+    launchOptions: {
+      slowMo: 1000
+  },},
   testDir: 'tests',
 });

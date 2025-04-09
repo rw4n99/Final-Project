@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 test('hello world!', async ({ page }) => {
     await page.goto('http://127.0.0.1:3000/en');
     const title = await page.title();
@@ -12,11 +13,6 @@ test('should display sign-in or sign-out button', async ({ page }) => {
     // Check for "Sign in" button when not signed in
     const signInButton = page.locator('text=Sign in');
     await expect(signInButton).toBeVisible();
-
-    // Simulate signed-in state (if possible, mock authentication)
-    // Check for "Sign out" button
-    // const signOutButton = page.locator('text=Sign out');
-    // await expect(signOutButton).toBeVisible();
 });
 
 test('should navigate to upload page when clicking upload link', async ({ page }) => {
@@ -53,52 +49,69 @@ test('should navigate to upload page when clicking upload link', async ({ page }
     await expect(page).toHaveURL('http://127.0.0.1:3000/en/visa_documents/new');
 });
 
-// test('should download a file when clicking download link', async ({ page }) => {
+import path from 'path';
 
-//     await page.goto('http://127.0.0.1:3000/users/sign_in');
+test('Upload a single file', async ({ page }) => {
+  await page.goto('http://127.0.0.1:3000/users/sign_in');
 
-//     // Fill in the login form
-//     await page.fill('input[name="user[email]"]', 'playwright@test.com');
-//     await page.fill('input[name="user[password]"]', 'playwrighttest');
+  // Fill in the login form
+  await page.fill('input[name="user[email]"]', 'playwright@test.com');
+  await page.fill('input[name="user[password]"]', 'playwrighttest');
 
-//     await page.goto('http://127.0.0.1:3000/en');
+  // Submit the form by clicking the login button and wait for navigation
+  await Promise.all([
+    page.waitForNavigation(),
+    page.getByRole('button', { name: 'Sign in' }).click()
+  ]);
 
-//     const downloadLink = page.locator('text=Download');
-//     await expect(downloadLink).toBeVisible();
+  await page.goto('http://127.0.0.1:3000/en/visa_documents/97/edit');
 
-//     // Optionally, intercept the download request
-//     const [download] = await Promise.all([
-//         page.waitForEvent('download'),
-//         downloadLink.click(),
-//     ]);
+  // Select the file input by its type
+  const fileInput = page.locator('input[name="visa_document[visa_application_payment]"]');
 
-//     // Verify the downloaded file name
-//     const fileName = await download.suggestedFilename();
-//     expect(fileName).toContain('visa_application_form');
-// });
+  // Upload the file
+  const filePath = path.resolve('tests', 'assets', 'ACRO.csv');
+  console.log(filePath);
+  await expect(fileInput).toBeVisible();
+  await fileInput.setInputFiles(filePath);
+  const uploadedFiles = await fileInput.evaluate(input => input.files?.[0]?.name);
+  console.log(uploadedFiles); // Should log "ACRO.csv"
 
-// test('should display correct document statuses in the table', async ({ page }) => {
-//     await page.goto('http://127.0.0.1:3000/en');
+  // Submit the form
+  await page.locator('text=Update document').click();
 
-//     // Check for a specific document status
-//     const documentStatus = page.locator('text=Not uploaded');
-//     await expect(documentStatus).toBeVisible();
-// });
+  // Assert that the upload was successful
+  await expect(page).toHaveURL('http://127.0.0.1:3000/en');
 
-// test('should navigate to more info page when clicking the link', async ({ page }) => {
-//     await page.goto('http://127.0.0.1:3000/en');
+    // Check for a success message or any indication of successful upload
+   expect(page.locator('text=ACRO.csv')).toBeVisible();
 
-//     const moreInfoLink = page.locator('text=More Info');
-//     await moreInfoLink.click();
+   await page.locator('text=Download').click();
 
-//     // Verify navigation to the correct page
-//     await expect(page).toHaveURL(/\/pages\/new/);
-// });
+   expect(page.locator('text=ACRO.csv')).toBeVisible()
 
-// test('should display content in the correct language', async ({ page }) => {
-//   await page.goto('http://127.0.0.1:3000/cy'); // Welsh locale
+   await page.goto('http://127.0.0.1:3000/en');
+});
 
-//   const welshText = page.locator('text=Welsh content here'); // Replace with actual Welsh text
-//   await expect(welshText).toBeVisible();
-// });
+test('should download a file when clicking download link', async ({ page }) => {
 
+    await page.goto('http://127.0.0.1:3000/users/sign_in');
+
+    // Fill in the login form
+    await page.fill('input[name="user[email]"]', 'playwright@test.com');
+    await page.fill('input[name="user[password]"]', 'playwrighttest');
+
+    await Promise.all([
+        page.waitForNavigation(),
+        page.getByRole('button', { name: 'Sign in' }).click()
+      ]);
+
+    await page.goto('http://127.0.0.1:3000/en');
+
+    await page.locator('text=Download').click();
+
+    expect(page.locator('text=ACRO.csv')).toBeVisible()
+
+    await page.goto('http://127.0.0.1:3000/en');
+
+});
